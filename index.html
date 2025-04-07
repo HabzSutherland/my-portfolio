@@ -87,19 +87,20 @@
       </article>
     </div>
 
-  <!-- Chat-like Contact Window -->
+<!-- Chat-like Contact Window -->
 <div id="chatbot-window" class="chat-popup">
-  <div class="chat-header">Contact Me</div>
-  <div class="chat-body">
-    <p><i class="fas fa-envelope me-2"></i> Habeeb.RahmanV@sutherlandglobal.com</p>
-    <p><i class="fab fa-github me-2"></i><a href="https://github.com/habeebrahmanv" target="_blank">GitHub Profile</a></p>
-    <p><i class="fas fa-phone me-2"></i> +91-9567962392</p>
-    <p class="small text-muted mt-3 mb-0">&copy; 2025 Habeeb Rahman V</p>
+  <div class="chat-header">
+    🤖 Robility Bot
+    <button class="close-btn" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div id="typing-indicator" class="typing">Typing<span>.</span><span>.</span><span>.</span></div>
   </div>
 </div>
 
 <!-- Floating Chat Button -->
 <button id="chatbot-toggle" onclick="toggleChat()">💬</button>
+
 
 <script>
   function toggleChat() {
