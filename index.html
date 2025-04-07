@@ -108,23 +108,50 @@
     chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'flex' : 'none';
   }
 
-  function sendMessage() {
-    const input = document.getElementById('userInput');
-    const messages = document.getElementById('chatbot-messages');
-    const message = input.value.trim();
-    if (message) {
-      const userMsg = document.createElement('div');
-      userMsg.textContent = "You: " + message;
-      messages.appendChild(userMsg);
-      
-      const botMsg = document.createElement('div');
-      botMsg.textContent = "Bot: Thanks for your message!";
-      messages.appendChild(botMsg);
-      
-      input.value = '';
-      messages.scrollTop = messages.scrollHeight;
-    }
+  <script>
+const messages = [
+  "👋 Hello there! I'm Robility Bot.",
+  "📧 You can reach me at: <br><b>Habeeb.RahmanV@sutherlandglobal.com</b>",
+  "🧑‍💻 Check my work here: <a href='https://github.com/habeebrahmanv' target='_blank'>GitHub Profile</a>",
+  "📞 Call me: <b>+91-9567962392</b>",
+  "© 2025 Habeeb Rahman V"
+];
+
+let msgIndex = 0;
+let chatOpen = false;
+
+function toggleChat() {
+  const popup = document.getElementById("chatbot-window");
+  const chatBody = document.getElementById("chat-body");
+  const typing = document.getElementById("typing-indicator");
+
+  if (chatOpen) {
+    popup.style.display = "none";
+    chatBody.innerHTML = `<div id="typing-indicator" class="typing">Typing<span>.</span><span>.</span><span>.</span></div>`;
+    msgIndex = 0;
+    chatOpen = false;
+  } else {
+    popup.style.display = "flex";
+    chatOpen = true;
+    showNextMessage();
   }
+}
+
+function showNextMessage() {
+  const typing = document.getElementById("typing-indicator");
+  if (msgIndex < messages.length) {
+    setTimeout(() => {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "chat-msg";
+      msgDiv.innerHTML = messages[msgIndex];
+      document.getElementById("chat-body").insertBefore(msgDiv, typing);
+      msgIndex++;
+      showNextMessage();
+    }, 1000); // Delay per message
+  } else {
+    typing.style.display = "none";
+  }
+}
 </script>
 
 </body>
