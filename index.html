@@ -107,6 +107,30 @@
 </div>
 
 <button id="chatbot-toggle" onclick="toggleChat()">💬</button>
+<script>
+  function toggleChat() {
+    const chatWindow = document.getElementById('chatbot-window');
+    chatWindow.style.display = chatWindow.style.display === 'none' || chatWindow.style.display === '' ? 'flex' : 'none';
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('userInput');
+    const messages = document.getElementById('chatbot-messages');
+    const message = input.value.trim();
+    if (message) {
+      const userMsg = document.createElement('div');
+      userMsg.textContent = "You: " + message;
+      messages.appendChild(userMsg);
+      
+      const botMsg = document.createElement('div');
+      botMsg.textContent = "Bot: Thanks for your message!";
+      messages.appendChild(botMsg);
+      
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+    }
+  }
+</script>
 
 </body>
 </html>
